@@ -1,5 +1,5 @@
 import React from 'react';
-import { Checkbox, FormControlLabel } from '@material-ui/core';
+import { Checkbox, FormControlLabel } from '@mui/material';
 
 const AboutContent = ({ country, setCountry, year, setYear, handleContinue, checked, setChecked }) => {
  

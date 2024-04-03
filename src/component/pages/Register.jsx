@@ -7,7 +7,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import { MuiOtpInput } from "mui-one-time-password-input";
-import TextField from "@material-ui/core/TextField";
+import { TextField } from '@mui/material';
 import google_icon from "../pages/images/ic_google.svg";
 import microsoft_icon from "../pages/images/ic_microsoft.svg";
 import appContext from "../../context/appContext";

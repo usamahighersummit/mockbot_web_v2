@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import ReactGA from "react-ga4"
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 const PurpleCheckbox = styled(Checkbox)(({ theme }) => ({
   color: theme.palette.getContrastText('#6750A4'), // Color for unchecked state

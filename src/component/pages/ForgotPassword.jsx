@@ -3,7 +3,7 @@ import axios from "axios";
 import { MuiOtpInput } from "mui-one-time-password-input";
 import { Link, useNavigate } from "react-router-dom";
 
-import TextField from "@material-ui/core/TextField";
+import { TextField } from '@mui/material';
 import appContext from "../../context/appContext";
 function ForgotPassword(props) {
   const [passwordCriteraMatch, setPasswordCriteraMatch] = React.useState(true);
