@@ -3,7 +3,7 @@ import axios from "axios";
 import { MuiOtpInput } from "mui-one-time-password-input";
 import { Link, useNavigate } from "react-router-dom";
 
-import { TextField } from '@mui/material';
+import {TextField} from "@mui/material";
 import appContext from "../../context/appContext";
 function ForgotPassword(props) {
   const [passwordCriteraMatch, setPasswordCriteraMatch] = React.useState(true);
@@ -224,7 +224,7 @@ function ForgotPassword(props) {
               <div className="mt-[20px] ">
                 <button
                   type="submit"
-                  className="sign-in-button bg-[black] rounded-md hover:bg-black text-[white] hover:text-white font-bold py-2 px-4 w-full h-[45px]"
+                  className="sign-in-button bg-[#8854C0] rounded-md hover:bg-black text-[white] hover:text-white font-bold py-2 px-4 w-full h-[45px]"
                   onClick={submitForgotPasswordRequest}
                 >
                   Submit
@@ -273,7 +273,7 @@ function ForgotPassword(props) {
                   <div className="mt-[24px] ">
                     <button
                       type="submit"
-                      className="sign-in-button bg-[black]  rounded-md hover:bg-black text-[white] hover:text-white font-bold py-2 px-4 w-full h-[45px]"
+                      className="sign-in-button bg-[#8854C0]  rounded-md hover:bg-black text-[white] hover:text-white font-bold py-2 px-4 w-full h-[45px]"
                       onClick={(e) => verifyOtp(credentials.email, otp, e)}
                     >
                       Verify
@@ -355,7 +355,7 @@ function ForgotPassword(props) {
                     <div className="mt-[20px] ">
                       <button
                         type="submit"
-                        className="sign-in-button bg-[black]  rounded-md hover:bg-black text-[white] hover:text-white font-bold py-2 px-4 w-full h-[45px]"
+                        className="sign-in-button bg-[#8854C0]  rounded-md hover:bg-black text-[white] hover:text-white font-bold py-2 px-4 w-full h-[45px]"
                         onClick={(e) => updatePassword(e)}
                       >
                         Update password

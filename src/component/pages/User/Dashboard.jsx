@@ -1,6 +1,8 @@
 import React, {useState,useEffect} from 'react';
 import Header from '../../Header';
 import { useNavigate } from 'react-router-dom';
+import icon1 from '../../../images/Icons.png'
+import icon2 from '../../../images/Icons_2.png'
 const Dashboard = () => {
   const navigate = useNavigate();
   const [subjects, setSubjects] = useState([]);
@@ -50,40 +52,48 @@ navigate("/quiz")
     <>
     <Header />
     <div className="container mx-auto my-8 p-5 bg-white rounded shadow">
-      <div className="mb-6">
-        <h1 className="text-xl font-bold text-gray-700 text-center">Hi, {name} 👋</h1>
-        <p className='text-center'>Welcome to your Save My Exams account and launchpad to stress-free and effective study.</p>
-      </div>
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-semibold text-gray-700">My subjects</h2>
-        <button onClick={()=>{navigate("/about_you")}} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition ease-in-out duration-300">
-          Add/edit subjects
-        </button>
-      </div>
-      <table className="w-full text-left rounded-lg overflow-hidden">
-        <thead className="bg-gray-800 text-white">
-          <tr>
-            <th className="px-4 py-3 border-b-2 border-gray-200">Subject</th>
-            <th className="px-4 py-3 border-b-2 border-gray-200">Date</th>
-            <th className="px-4 py-3 border-b-2 border-gray-200"></th>
-          </tr>
-        </thead>
-        <tbody>
-  {subjects.map((subject, index) => (
-    <tr key={index} className="hover:bg-gray-100">
-      <td className="px-4 py-3 border-b border-gray-200">{subject.subject_name}</td>
-      <td className="px-4 py-3 border-b border-gray-200">
-        {/* Assuming you want to display creation_timestamp as the date */}
-        {new Date(subject.creation_timestamp).toLocaleDateString()}
-      </td>
-      <td className="px-4 py-3 border-b border-gray-200"><button style={{fontFamily:"Roboto", backgroundColor:'#8854C0', color:'white',borderRadius:'4px', paddingTop:"8px" , paddingBottom:'8px', paddingRight:'24px',paddingLeft:"24px", fontSize:'14px'}} onClick={()=>handleClick(subject.subject_id)}>Start practicing</button></td>
-    </tr>
-  ))}
-</tbody>
+      <h1 className="text-3xl font-bold text-[#322E33]text-left" style={{fontFamily:'Roboto',fontSize:'28px',lineHeight:'36px'}}>Welcome Aboard, {name}!</h1>
+      <p className="text-left mt-2 text-[#464646]" style={{fontFamily:'Roboto',fontSize:'20px',lineHeight:'24px'}}>Please choose a subject you wish to practice with MockBot's AI marking & feedback.</p>
+      <div className="flex justify-between items-center mt-8  bg-gray-100">
+        <h2 className="text-lg font-semibold text-gray-700  py-2 px-4 rounded-l-lg mb-[26px] mt-[18px]">My Subjects</h2>
+        <button 
+  onClick={() => { navigate("/about_you") }} 
+  className="text-[#444780] font-bold py-2 px-4 rounded border border-[#444780] hover:bg-purple-100 border-2 transition ease-in-out duration-300 mr-2"
+>
+  + Add/edit subjects
+</button>
 
-      </table>
+      </div>
+      <div className="bg-[#F2F2F2] rounded-lg">
+        <table className="w-full text-left overflow-x-auto">
+          <thead className="bg-[#E0E0E0] ">
+            <tr>
+              <th className="px-4 py-3 border-b-2 border-gray-200 text-gray-600" style={{fontFamily:'Roboto',fontSize:'16px',lineHeight:'24px', letterSpacing:'0.15px'}}>Subject</th>
+              <th className="px-4 py-3 border-b-2 border-gray-200 text-gray-600" style={{fontFamily:'Roboto',fontSize:'16px',lineHeight:'24px', letterSpacing:'0.15px'}}>Enrolment date</th>
+              <th className="px-4 py-3 border-b-2 border-gray-200"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {subjects.map((subject, index) => (
+              <tr key={index} className="bg-[#F2F2F2]">
+                <td className="px-2 py-2 border-b border-gray-200 font-medium text-gray-700 flex items-center" style={{fontFamily:'Roboto',fontSize:'16px',lineHeight:'24px', letterSpacing:'0.15px'}}>
+        {/* Insert the icon next to the subject name */}
+        <img src={index % 2 === 0 ? icon1 : icon2} alt="Icon" className="mr-2" />
+        <button  onClick={() => handleClick(subject.subject_id)} >{subject.subject_name}</button>
+      </td>
+                <td className="px-2 py-2 border-b border-gray-200 text-gray-500" style={{fontFamily:'Roboto',fontSize:'16px',lineHeight:'24px', letterSpacing:'0.15px'}}>
+                  {new Date(subject.creation_timestamp).toLocaleDateString()}
+                </td>
+                <td className="px-6 py-3 border-b border-gray-200 text-left">
+                  <button className="bg-[#444780] text-white rounded py-2 px-6 text-sm transition ease-in-out duration-300" onClick={() => handleClick(subject.subject_id)} style={{fontFamily:'Roboto',fontSize:'16px',lineHeight:'24px', letterSpacing:'0.15px'}}>Start practicing</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
-    </>
+  </>
   );
 };
 

@@ -138,7 +138,7 @@ function LoginWithEmail(props) {
             </Link>
             <button
               type="submit"
-              className="sign-in-button mt-[8px] bg-[black]  rounded-md hover:bg-black text-[white] hover:text-white font-bold py-2 px-4 w-full h-[45px]"
+              className="sign-in-button mt-[8px] bg-[#8854C0]  rounded-md hover:bg-black text-[white] hover:text-white font-bold py-2 px-4 w-full h-[45px]"
               onClick={loginUser}
             >
               Sign In

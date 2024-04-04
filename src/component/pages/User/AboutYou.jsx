@@ -2,7 +2,8 @@ import React, {useState,useEffect} from 'react';
 import Header from '../../Header';
 import SubjectsSelection from './pages/SubjectsSelection'; // Import your SubjectsSelection component
 import AboutContent from './pages/AboutContent';
-
+import activeCheck from "../../../images/check_circle.png"
+import unActiveCheck from "../../../images/check_circle_not.png"
 const AboutYou = () => {
     const [activeTab, setActiveTab] = useState('aboutYou');
     const [selectedSubjects, setSelectedSubjects] = useState([]); // Add state for selected subjects if needed for the SubjectsSelection component
@@ -10,12 +11,18 @@ const AboutYou = () => {
     const [year, setYear] = useState("");
     const [checked,setChecked] = useState(true);
     const [subjects, setSubjects] = useState([]);
+
   const [profileExists, setProfileExists] = useState(false);
    
   
     const handleTabClick = (tabName) => {
+      if(profileExists){
       setActiveTab(tabName);
       console.log(`${tabName} tab clicked`);
+      }
+      else{
+        return;
+      }
     };
 
     const onSelectSubject = (subject) => {
@@ -69,24 +76,31 @@ const AboutYou = () => {
   
       // Call the fetch function
       fetchProfileData();
+    
     }, []); // The empty dependency array ensures this effect runs only once after the initial render
+    useEffect(()=>{
+      if(profileExists){
+        
+        setActiveTab('yourSubjects')
+      }
+    },[profileExists])
     return (
       <>
         <Header />
-        <div className="mx-auto max-w-4xl">
-          <div className="flex justify-center my-5 cursor-pointer">
-            <div className={`text-center px-4 py-2 ${activeTab === 'aboutYou' ? 'text-blue-500 border-b-2 border-blue-500' : 'text-gray-500'}`} onClick={() => handleTabClick('aboutYou')}>
-              About You
+        <div className="">
+        <div className={`flex justify-center my-5 ${!profileExists ? '' : 'cursor-pointer'}`}>
+            <div className={`text-center  flex px-4 py-2 ${activeTab === 'aboutYou' ? 'text-[#444780] border-b-2 border-[#444780]' : 'text-gray-500  border-b-2 border-grey-500'}`} onClick={() => handleTabClick('aboutYou')}>
+            <img className='mr-2 w-[18px] mt-1 h-[18px]' src={ activeTab === 'aboutYou' ? activeCheck : unActiveCheck} alt='' /> About You
             </div>
            
-            <div className={`text-center px-4 py-2 ${activeTab === 'yourSubjects' ? 'text-blue-500 border-b-2 border-blue-500' : 'text-gray-500'}`} onClick={() => handleTabClick('yourSubjects')}>
-              Your Subjects
+            <div className={`text-center flex px-4 py-2 ${activeTab === 'yourSubjects' ? 'text-[#444780] border-b-2 border-[#444780]' : 'text-gray-500  border-b-2 border-grey-500'}`} onClick={() => handleTabClick('yourSubjects')}>
+            <img  className='mr-2 mt-1 w-[18px] h-[18px]'  src={ activeTab === 'yourSubjects' ? activeCheck : unActiveCheck} alt='' />  Your Subjects
             </div>
           </div>
 
           {activeTab === 'aboutYou' && (
             // About You content goes here
-          <AboutContent country={country} setCountry={setCountry} year={year} setYear={setYear} handleContinue={handleContinue} checked={checked} setChecked={setChecked}/>
+          <AboutContent profileExists={profileExists} country={country} setCountry={setCountry} year={year} selectedSubjects={selectedSubjects} setYear={setYear} handleContinue={handleContinue} checked={checked} setChecked={setChecked}/>
           )}
 
      

@@ -126,9 +126,7 @@ function LoginOptions(props) {
           <div>
             <div className="w-full">
               <div className="login-options">
-                {" "}
-                Choose how would you like to sign in/sign up your<br></br>{" "}
-                Mockbot account
+              Choose how would you like to sign in your MockBot account
               </div>
               <div
                 className="mt-[20px] "

@@ -73,15 +73,16 @@ const [prmpt, setprmpt] = useState();
       const selectedtopic2 = localStorage.getItem('topic_id');
       const mail = localStorage.getItem('email_address');
       const topic_name = localStorage.getItem('topic_name');
+      var sbj_id = localStorage.getItem('subject_id');
       setSelectedTopic(selectedtopic2);
       console.log("topic pkr " + selectedtopic2);
       console.log("topic here is " + selectedtopic2);
-      console.log("subject id " + subjectID.current);
+      console.log("subject id " + sbj_id);
   
       const url = `${process.env.REACT_APP_REST_API_BASE_URL}/fetch_questions`;
       const body = {
         chapter_id: selectedtopic2 !== 'null' ? selectedtopic2 : null,
-        subject_id: selectedtopic2 === 'null' ?  subjectID.current : null
+        subject_id: selectedtopic2 === 'null' ?  sbj_id : null
       };
   
       const response = await fetch(url, {

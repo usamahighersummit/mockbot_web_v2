@@ -7,7 +7,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import { MuiOtpInput } from "mui-one-time-password-input";
-import { TextField } from '@mui/material';
+import {TextField} from "@mui/material";
 import google_icon from "../pages/images/ic_google.svg";
 import microsoft_icon from "../pages/images/ic_microsoft.svg";
 import appContext from "../../context/appContext";
@@ -49,7 +49,7 @@ function Register() {
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
 
-  const [signUpStep, setSignUpStep] = useState(1);
+  const [signUpStep, setSignUpStep] = useState(0);
   const state = useContext(appContext);
   
 
@@ -238,33 +238,20 @@ function Register() {
           <LoginPageLeftSide />
           {/* page 2 */}
           {signUpStep === 0 ? (
-            <div className="w-[60%] h-full bg-white centered md:h-screen p-10 md:p-40 sm:p-5">
+            <div className="h-full bg-white centered md:h-screen p-10 md:p-40 sm:p-5">
               <div className="main-content-div w-[500px] sm:w-[360px] md:w-[420px]">
                 <div className="sign-in-label ">
-                  <p>Welcome to Mockbot</p>
+                  <p  className="text-[24px]">Boost your grades - join MockBot now!</p>
                 </div>
                 <div className="sign-in-sub-label ">
-                  <p>
-                    Choose how would you like to create your
-                    <br />
-                    Mockbot account
-                  </p>
+                <div className="login-options mb-[16px]">
+                Choose how would you like to create your account
+              </div>
                 </div>
 
                 <div>
                   <div className="w-full">
-                    <button
-                      type="submit"
-                      style={{ display: "none" }}
-                      className="create-new-account-button border-[1px] border-[#474747] rounded-md hover:bg-black text-[black] hover:text-white font-bold py-2 px-4 w-full h-[45px]"
-                      onClick={() => {
-                        setSignUpStep(1);
-                        // amplitude.getInstance().setUserId(null);
-                        // amplitude.getInstance().logEvent("MAR-Page View");
-                      }}
-                    >
-                      Continue with work email
-                    </button>
+                   
                     <div
                       className="mt-[20px]"
                       style={{
@@ -277,7 +264,7 @@ function Register() {
                       {/* <GoogleButton label="Sign in with Google 🚀 " onClick={() => login()}/> */}
                       <button
                         type="submit"
-                        style={{ display: "none" }}
+                     
                         className="create-new-account-button border-[1px] border-[#474747] rounded-md hover:bg-black text-[black] hover:text-white font-bold py-2 px-4 w-full h-[45px]"
                       >
                         <div style={{ display: "inline-block" }}>
@@ -304,7 +291,7 @@ function Register() {
                     >
                       <button
                         type="submit"
-                        style={{ display: "none" }}
+                      
                         className="create-new-account-button border-[1px] border-[#474747] rounded-md hover:bg-black text-[black] hover:text-white font-bold py-2 px-4 w-full h-[45px]"
                       >
                         <div style={{ display: "inline-block" }}>
@@ -326,6 +313,18 @@ function Register() {
                   authCallback={authHandler}
                 /> */}
                     </div>
+                    <button
+                      type="submit"
+                    
+                      className="mt-[16px] create-new-account-button border-[1px] border-[#474747] rounded-md hover:bg-black text-[black] hover:text-white font-bold py-2 px-4 w-full h-[45px]"
+                      onClick={() => {
+                        setSignUpStep(1);
+                        // amplitude.getInstance().setUserId(null);
+                        // amplitude.getInstance().logEvent("MAR-Page View");
+                      }}
+                    >
+                      Continue with work email
+                    </button>
                   </div>
                 </div>
 
@@ -337,7 +336,7 @@ function Register() {
                     color: "#101010",
                   }}
                 >
-                  <p className="mb-[0px]">Or</p>
+                
                 </div>
 
                 <div className="mt-[0px]">
@@ -461,7 +460,7 @@ function Register() {
                       <div className="mt-[28px] ">
                         <button
                           type="submit"
-                          className="sign-in-button bg-[black]   rounded-md hover:bg-black text-[white] hover:text-white font-bold py-2 px-4 w-full h-[45px]"
+                          className="sign-in-button bg-[#8854C0]   rounded-md hover:bg-black text-[white] hover:text-white font-bold py-2 px-4 w-full h-[45px]"
                           onClick={(e) => signUpUser(e)}
                         >
                           Sign Up
@@ -544,7 +543,7 @@ function Register() {
                         <div className="mt-[24px] ">
                           <button
                             type="submit"
-                            className="sign-in-button bg-[black]  rounded-md hover:bg-black text-[white] hover:text-white font-bold py-2 px-4 w-full h-[45px]"
+                            className="sign-in-button bg-[#8854C0]  rounded-md hover:bg-black text-[white] hover:text-white font-bold py-2 px-4 w-full h-[45px]"
                             onClick={(e) =>
                               verifyOtp(credentials.email, otp, e)
                             }
